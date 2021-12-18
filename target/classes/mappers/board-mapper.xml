@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Board">
+	<insert id="insertBoard">
+		insert into Songs (title, creator, description, category, YLink)
+		values
+		(#{title} , #{creator} , #{description} , #{category}, #{YLink})
+	</insert>
+	<update id="updateBoard">
+		update Songs
+		set title=#{title}, description=#{description}, creator=#{creator}, category=#{category}, YLink=#{YLink}
+		where id=#{id}
+	</update>
+	<delete id="deleteBoard">
+		delete from Songs where id=#{id}
+	</delete>
+	<select id="getBoard" resultType="board">
+		select * from Songs where id=#{id}
+	</select>
+	<select id="getBoardList" resultType="board">
+		select * from Songs order by id desc
+	</select>
+</mapper>
